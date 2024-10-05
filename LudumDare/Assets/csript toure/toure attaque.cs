@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class TowerShoot : MonoBehaviour
 {
-    public float detectionRadius = 5f; // Portée de détection de l'ennemi
-    public float timeBetweenShots = 1f; // Délai entre chaque tir
-    public GameObject bulletPrefab; // Préfabriqué de la balle
+    public float detectionRadius = 5f; // Portï¿½e de dï¿½tection de l'ennemi
+    public float timeBetweenShots = 1f; // Dï¿½lai entre chaque tir
+    public GameObject bulletPrefab; // Prï¿½fabriquï¿½ de la balle
     public Transform shootPoint; // Point de tir de la tour
 
-    public Transform targetEnemy; // L'ennemi ciblé
+    public Transform targetEnemy; // L'ennemi ciblï¿½
     private float nextShotTime = 0f; // Temps pour le prochain tir
 
     void Update()
     {
-        // Détecter l'ennemi
+        // Dï¿½tecter l'ennemi
         DetectEnemy();
 
-        // Si un ennemi est trouvé et que le temps est écoulé, tirer
+        // Si un ennemi est trouvï¿½ et que le temps est ï¿½coulï¿½, tirer
         if (targetEnemy != null && Time.time >= nextShotTime)
         {
             Shoot();
@@ -25,31 +25,31 @@ public class TowerShoot : MonoBehaviour
 
     void DetectEnemy()
     {
-        // Cherche l'ennemi à proximité
+        // Cherche l'ennemi ï¿½ proximitï¿½
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
 
-        // Parcourt tous les objets détectés pour trouver un ennemi
+        // Parcourt tous les objets dï¿½tectï¿½s pour trouver un ennemi
         targetEnemy = null;
         foreach (Collider2D col in colliders)
         {
             if (col.CompareTag("Enemy")) // Assurez-vous que vos ennemis ont le tag "Enemy"
             {
                 targetEnemy = col.transform;
-                break; // Cibler le premier ennemi détecté
+                break; // Cibler le premier ennemi dï¿½tectï¿½
             }
         }
     }
 
     void Shoot()
     {
-        // Crée une balle et la tire vers l'ennemi
+        // Crï¿½e une balle et la tire vers l'ennemi
         Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
 
-        // Réinitialiser le timer pour le prochain tir
+        // Rï¿½initialiser le timer pour le prochain tir
         nextShotTime = Time.time + timeBetweenShots;
     }
 
-    // Affiche un rayon de détection dans l'éditeur pour déboguer
+    // Affiche un rayon de dï¿½tection dans l'ï¿½diteur pour dï¿½boguer
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

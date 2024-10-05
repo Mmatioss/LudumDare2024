@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f; // Vitesse de la balle
-    public int damage = 1; // Dégâts infligés à l'ennemi
+    public int damage = 1; // Dï¿½gï¿½ts infligï¿½s ï¿½ l'ennemi
 
     private Vector2 direction;
 
@@ -15,22 +15,22 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        // Déplace la balle vers l'ennemi
+        // Dï¿½place la balle vers l'ennemi
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Vérifie si la balle touche un ennemi
+        // Vï¿½rifie si la balle touche un ennemi
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Applique des dégâts à l'ennemi
-            var enemy = collision.gameObject.GetComponent<Enemy>();
+            // Applique des dï¿½gï¿½ts ï¿½ l'ennemi
+            var enemy = collision.gameObject.GetComponent<EnemyBehaviour>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
             }
-            // Détruire la balle après le tir
+            // Dï¿½truire la balle aprï¿½s le tir
             Destroy(gameObject);
         }
     }

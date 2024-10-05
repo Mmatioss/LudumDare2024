@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     [Header("Parameters")]
-    [SerializeField, Range(1f, 10f)] private float _speed;
     [SerializeField] private int _maxHealth;
     private int _currentHealth;
 
@@ -28,7 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (_currentHealth == 0)
         {
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }

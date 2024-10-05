@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 10f; // Vitesse de la balle
     public int damage = 1; // D�g�ts inflig�s � l'ennemi
+    public float lifetime = 2f;
 
     private Vector2 direction;
 
@@ -17,9 +18,15 @@ public class Bullet : MonoBehaviour
     {
         // D�place la balle vers l'ennemi
         transform.Translate(direction * speed * Time.deltaTime);
+
+        lifetime -= Time.deltaTime;
+        if(lifetime < 0 )
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         // V�rifie si la balle touche un ennemi
         if (collision.gameObject.CompareTag("Enemy"))

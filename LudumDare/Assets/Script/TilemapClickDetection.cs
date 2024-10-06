@@ -9,12 +9,12 @@ public class TilemapClickDetection : MonoBehaviour
             // Vérifie si la cellule contient une tuile
             if (tilemap.HasTile(cellPosition))
             {
-                Debug.Log("Tuile sur cette position.");
+                //Debug.Log("Tuile sur cette position.");
                 return true;
             }
             else
             {
-                Debug.Log("Aucune tuile sur cette position.");
+                //Debug.Log("Aucune tuile sur cette position.");
                 return false;
             }
  }

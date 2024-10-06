@@ -51,13 +51,32 @@ MonoBehaviour:
   - {fileID: 5376586658257602557}
   - {fileID: 5261652212750217597}
   - {fileID: 1436916927250033487}
-  _spawnCooldown: 3
-  _spawnAmount: 1
-  _ennemiesTypes:
+  _spawnCooldown: 1
+  _waveCooldown: 30
+  mobs1:
   - {fileID: 3084602339524153039, guid: 20cbda853b82faa499f32ae358f4c8ad, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  count1: 1e000000000000000000000000000000
+  mobs2:
+  - {fileID: 3084602339524153039, guid: 20cbda853b82faa499f32ae358f4c8ad, type: 3}
+  - {fileID: 3084602339524153039, guid: 081f227b7e4bed048973f104078eb627, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  count2: 230000000f0000000000000000000000
+  mobs3:
+  - {fileID: 3084602339524153039, guid: 20cbda853b82faa499f32ae358f4c8ad, type: 3}
+  - {fileID: 3084602339524153039, guid: 081f227b7e4bed048973f104078eb627, type: 3}
+  - {fileID: 3084602339524153039, guid: 766ddf1c0a7d9b84592b7918d846c00a, type: 3}
+  - {fileID: 0}
+  count3: 0f000000190000000a00000000000000
+  mobs4:
+  - {fileID: 3084602339524153039, guid: 081f227b7e4bed048973f104078eb627, type: 3}
+  - {fileID: 3084602339524153039, guid: 766ddf1c0a7d9b84592b7918d846c00a, type: 3}
+  - {fileID: 3084602339524153039, guid: 625f4b97c9ea1174b8f5d2974f7a0bbb, type: 3}
+  - {fileID: 0}
+  count4: 14000000190000000400000000000000
 --- !u!1 &1625670998507623856
 GameObject:
   m_ObjectHideFlags: 0

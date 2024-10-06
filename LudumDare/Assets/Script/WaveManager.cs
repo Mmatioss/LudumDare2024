@@ -1,6 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+
+#pragma warning disable IDE0090
+#pragma warning disable IDE0044
+#pragma warning disable IDE0059
 
 public class WaveManager : MonoBehaviour
 {
@@ -9,48 +15,107 @@ public class WaveManager : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField, Range(.5f, 3f)] private float _spawnCooldown;
-    [SerializeField, Range(1, 5)] private int _spawnAmount;
+    [SerializeField, Range(1, 30)] private int _waveCooldown;
 
-    [Header("Enemies Types")]
-    [SerializeField] private GameObject[] _ennemiesTypes = new GameObject[4];
+    [Header("Wave 1")]
+    [SerializeField] private GameObject[] mobs1 = new GameObject[4];
+    [SerializeField] private int[] count1 = new int[4];
+    private Dictionary<GameObject, int> _wave1 = new Dictionary<GameObject, int>();
+
+    [Header("Wave 2")]
+    [SerializeField] private GameObject[] mobs2 = new GameObject[4];
+    [SerializeField] private int[] count2 = new int[4];
+    private Dictionary<GameObject, int> _wave2 = new Dictionary<GameObject, int>();
+
+    [Header("Wave 3")]
+    [SerializeField] private GameObject[] mobs3 = new GameObject[4];
+    [SerializeField] private int[] count3 = new int[4];
+    private Dictionary<GameObject, int> _wave3 = new Dictionary<GameObject, int>();
+
+    [Header("Wave 4")]
+    [SerializeField] private GameObject[] mobs4 = new GameObject[4];
+    [SerializeField] private int[] count4 = new int[4];
+    private Dictionary<GameObject, int> _wave4 = new Dictionary<GameObject, int>();
 
     private float _spawnTime;
+    private float _timeBetweenWaves;
 
-    // Start is called before the first frame update
     void Start()
     {
         _spawnTime = _spawnCooldown;
+        _timeBetweenWaves = _waveCooldown;
+
+        for (int i = 0; i< 4; i++)
+        {
+            _wave1.Add(mobs1[i], count1[i]);
+            _wave2.Add(mobs2[i], count2[i]);
+            _wave3.Add(mobs3[i], count3[i]);
+            _wave4.Add(mobs4[i], count4[i]);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateSpawner();
     }
 
-    void SpawnEnemy(GameObject enemy, Transform point)
+    void SpawnEnemyType(GameObject enemy, Transform point, int amount)
     {
-        Instantiate(enemy, point.position, point.rotation);
+        while (amount > 0)
+        {
+            _spawnTime -= Time.deltaTime;
+            if (_spawnTime < 0)
+            { 
+                Instantiate(enemy, point.position, point.rotation);
+                _spawnTime = _spawnCooldown;
+            }
+            amount--;
+        }
     }
 
-    void SpawnWave(int amount, GameObject enemyType, Transform point)
+    void SpawnWave(Dictionary<GameObject, int> wave, Transform point)
     {
-        for (int i = 0; i < amount; i++)
+        foreach (GameObject mob in wave.Keys)
         {
-            SpawnEnemy(enemyType, point);
+            SpawnEnemyType(mob, point, wave[mob]);
         }
     }
 
     void UpdateSpawner()
     {
-        _spawnTime -= Time.deltaTime;
-        if (_spawnTime < 0)
+        int currentWave = 1;
+
+        _timeBetweenWaves -= Time.deltaTime;
+        if ((_timeBetweenWaves < 0 && currentWave < 5) || (currentWave == 1))
         {
             foreach (Transform point in _points)
             {
-                SpawnWave(_spawnAmount, _ennemiesTypes[0], point);
+                switch (currentWave)
+                {
+                    case 1:
+                        SpawnWave(_wave1, point);
+                        break;
+
+                    case 2:
+                        SpawnWave(_wave2, point);
+                        break;
+
+                    case 3:
+                        SpawnWave(_wave3, point);
+                        break;
+
+                    case 4:
+                        SpawnWave(_wave4, point);
+                        break;
+
+                    default:
+                        break;
+                }
             }
-            _spawnTime = _spawnCooldown;
+
+            _timeBetweenWaves = _waveCooldown;
+
+            currentWave += 1;
         }
     }
 

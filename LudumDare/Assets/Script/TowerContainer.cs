@@ -9,10 +9,6 @@ public class TowerContainer : MonoBehaviour
     private bool isMouseHover = false;
     [SerializeField] private TowerPlacement towerPlacement;
 
-    void Start()
-    {
-        GetComponent<Image>().sprite = towerPrefab.GetComponent<SpriteRenderer>().sprite;
-    }
 
     void Update()
     {

@@ -11,16 +11,25 @@ public class TowerShoot : MonoBehaviour
     public Transform targetEnemy; // L'ennemi cibl�
     private float nextShotTime = 0f; // Temps pour le prochain tir
 
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     void Update()
     {
         // D�tecter l'ennemi
         DetectEnemy();
 
         // Si un ennemi est trouv� et que le temps est �coul�, tirer
-        if (targetEnemy != null && Time.time >= nextShotTime)
+        if (targetEnemy != null && Time.time >= nextShotTime && _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "AcidAlliedFiring")
         {
             Shoot();
         }
+
+        _animator.SetBool("Attacking", targetEnemy != null || FindAnyObjectByType<EnemyBehaviour>() != null);
     }
 
     void DetectEnemy()

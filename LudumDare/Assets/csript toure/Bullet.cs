@@ -8,16 +8,10 @@ public class Bullet : MonoBehaviour
 
     private Vector2 direction;
 
-    void Start()
-    {
-        // Calcule la direction vers l'ennemi
-        direction = (FindObjectOfType<TowerShoot>().targetEnemy.position - transform.position).normalized;
-    }
-
     void Update()
     {
         // D�place la balle vers l'ennemi
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         lifetime -= Time.deltaTime;
         if(lifetime < 0 )

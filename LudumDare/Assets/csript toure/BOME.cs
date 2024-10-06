@@ -8,11 +8,11 @@ public class BOME  : MonoBehaviour
 
     private Vector2 direction;
 
-    void Start()
-    {
-        // Calcule la direction vers l'ennemi
-        direction = (FindObjectOfType<TowerShoot>().targetEnemy.position - transform.position).normalized;
-    }
+    //void Start()
+    //{
+    //    // Calcule la direction vers l'ennemi
+    //    direction = (FindObjectOfType<TowerShoot>().targetEnemy.position - transform.position).normalized;
+    //}
 
     void Update()
     {

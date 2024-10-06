@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-#pragma warning disable IDE0090
 #pragma warning disable IDE0044
 #pragma warning disable IDE0059
 
@@ -14,44 +15,32 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Transform[] _points = new Transform[3];
 
     [Header("Parameters")]
-    [SerializeField, Range(.5f, 3f)] private float _spawnCooldown;
-    [SerializeField, Range(1, 30)] private int _waveCooldown;
+    [SerializeField, Range(0f, 1f)] private float _spawnCooldown;
+    [SerializeField, Range(1, 50)] private int _waveCooldown;
+
+    [Header("Mobs")]
+    [SerializeField] private GameObject[] mobs = new GameObject[4];
 
     [Header("Wave 1")]
-    [SerializeField] private GameObject[] mobs1 = new GameObject[4];
     [SerializeField] private int[] count1 = new int[4];
-    private Dictionary<GameObject, int> _wave1 = new Dictionary<GameObject, int>();
 
     [Header("Wave 2")]
-    [SerializeField] private GameObject[] mobs2 = new GameObject[4];
     [SerializeField] private int[] count2 = new int[4];
-    private Dictionary<GameObject, int> _wave2 = new Dictionary<GameObject, int>();
 
     [Header("Wave 3")]
-    [SerializeField] private GameObject[] mobs3 = new GameObject[4];
     [SerializeField] private int[] count3 = new int[4];
-    private Dictionary<GameObject, int> _wave3 = new Dictionary<GameObject, int>();
 
     [Header("Wave 4")]
-    [SerializeField] private GameObject[] mobs4 = new GameObject[4];
     [SerializeField] private int[] count4 = new int[4];
-    private Dictionary<GameObject, int> _wave4 = new Dictionary<GameObject, int>();
 
-    private float _spawnTime;
     private float _timeBetweenWaves;
 
     void Start()
     {
-        _spawnTime = _spawnCooldown;
         _timeBetweenWaves = _waveCooldown;
-
-        for (int i = 0; i< 4; i++)
-        {
-            _wave1.Add(mobs1[i], count1[i]);
-            _wave2.Add(mobs2[i], count2[i]);
-            _wave3.Add(mobs3[i], count3[i]);
-            _wave4.Add(mobs4[i], count4[i]);
-        }
+        StartCoroutine(SpawnWave(count1, _points[0]));
+        StartCoroutine(SpawnWave(count1, _points[1]));
+        StartCoroutine(SpawnWave(count1, _points[2]));
     }
 
     void Update()
@@ -59,53 +48,46 @@ public class WaveManager : MonoBehaviour
         UpdateSpawner();
     }
 
-    void SpawnEnemyType(GameObject enemy, Transform point, int amount)
+    IEnumerator SpawnEnemyType(GameObject mob, Transform point, int amount)
     {
-        while (amount > 0)
+        for (int i = 0; i < amount; i++)
         {
-            _spawnTime -= Time.deltaTime;
-            if (_spawnTime < 0)
-            { 
-                Instantiate(enemy, point.position, point.rotation);
-                _spawnTime = _spawnCooldown;
-            }
-            amount--;
+            Instantiate(mob, point.position, point.rotation);
+            yield return new WaitForSeconds(_spawnCooldown);
         }
     }
 
-    void SpawnWave(Dictionary<GameObject, int> wave, Transform point)
+    IEnumerator SpawnWave(int[] count, Transform point)
     {
-        foreach (GameObject mob in wave.Keys)
+        for (int i = 0; i < 4; i++)
         {
-            SpawnEnemyType(mob, point, wave[mob]);
+            StartCoroutine(SpawnEnemyType(mobs[i], point, count[i]));
+            yield return new WaitForSeconds(_spawnCooldown / 4f);
         }
     }
 
+    private int currentWave = 2;
     void UpdateSpawner()
     {
-        int currentWave = 1;
-
         _timeBetweenWaves -= Time.deltaTime;
-        if ((_timeBetweenWaves < 0 && currentWave < 5) || (currentWave == 1))
+        if (_timeBetweenWaves < 0)
         {
+            Debug.Log("spawning");
+
             foreach (Transform point in _points)
             {
                 switch (currentWave)
                 {
-                    case 1:
-                        SpawnWave(_wave1, point);
-                        break;
-
                     case 2:
-                        SpawnWave(_wave2, point);
+                        StartCoroutine(SpawnWave(count2, point));
                         break;
 
                     case 3:
-                        SpawnWave(_wave3, point);
+                        StartCoroutine(SpawnWave(count3, point));
                         break;
 
                     case 4:
-                        SpawnWave(_wave4, point);
+                        StartCoroutine(SpawnWave(count4, point));
                         break;
 
                     default:
@@ -114,14 +96,13 @@ public class WaveManager : MonoBehaviour
             }
 
             _timeBetweenWaves = _waveCooldown;
-
-            currentWave += 1;
+            currentWave++;
         }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.cyan;
+        Gizmos.color = UnityEngine.Color.cyan;
         foreach (Transform point in _points)
         {
             Gizmos.DrawSphere(point.position, .5f);

@@ -32,11 +32,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Applique des d�g�ts � l'ennemi
-            var enemy = collision.gameObject.GetComponent<EnemyBehaviour>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-            }
+            collision.gameObject.SendMessage("TakeDamage", damage);
             // D�truire la balle apr�s le tir
             Destroy(gameObject);
         }

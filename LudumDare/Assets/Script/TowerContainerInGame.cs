@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -10,7 +11,7 @@ public class TowerContainerInGame : MonoBehaviour
     public TilemapClickDetection tilemapClickDetection;
     private Vector3Int theposition;
     private Vector3Int theposition2;
-    private bool isTileAlreadyOccupied = false;
+    [NonSerialized] public bool isTileAlreadyOccupied = false;
 
     void OnMouseUp()
     {
@@ -27,25 +28,23 @@ public class TowerContainerInGame : MonoBehaviour
         }
         towerPlacement.towerToBuild = null;
         towerPlacement.towerContainerInGame.GetComponent<SpriteRenderer>().sprite = null;
-        Debug.Log("Mouse up");
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger enter"+ other);
-        if (other.gameObject.tag == "ColliderOfTurrelPlacement")
+        Debug.Log("Collision detected");
+        if (collision.gameObject.tag == "ColliderOfTurrelPlacement")
         {
             isTileAlreadyOccupied = true;
-            Debug.Log("Tile already occupied");
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.gameObject.tag == "ColliderOfTurrelPlacement")
+        Debug.Log("Collision exit");
+        if (collision.gameObject.tag == "ColliderOfTurrelPlacement")
         {
             isTileAlreadyOccupied = false;
-            Debug.Log("Tile not occupied");
         }
     }
 }

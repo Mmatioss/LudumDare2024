@@ -39,7 +39,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2253946287674584333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 952590422647069862}
   - component: {fileID: 4282844279087078166}
   - component: {fileID: 7206980144362455563}
-  - component: {fileID: 1615946661685052189}
   - component: {fileID: 904287215338461373}
   m_Layer: 0
   m_Name: Toure acide
@@ -188,42 +187,6 @@ MonoBehaviour:
   timeBetweenShots: 0.1666667
   bulletPrefab: {fileID: 4658082134146422095, guid: d9a4324ddab864841bf27fc52cad3ef4, type: 3}
   shootPoint: {fileID: 1895308467766389501}
-  targetEnemy: {fileID: 0}
---- !u!58 &1615946661685052189
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6483925737942095826}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 4
 --- !u!95 &904287215338461373
 Animator:
   serializedVersion: 5

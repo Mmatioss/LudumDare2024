@@ -1,26 +1,32 @@
+ï»¿using System.Collections;
 using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    public int damageAmount = 10; // Dégâts infligés à l'ennemi
-    public string enemyTag = "Enemy"; // Le tag des ennemis
+    public int Damage = 2;
+    public float BlastRadius = 1.5f;
+    public GameObject BlastParticles;
 
-    // Cette fonction est appelée quand un autre objet entre dans la zone de trigger
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        // Vérifie si l'objet entrant dans la zone est un ennemi
-        if (other.CompareTag(enemyTag))
-        {
-            // Essaye de récupérer le script de l'ennemi
-            EnemyBehaviour enemyHealth = other.GetComponent<EnemyBehaviour>();
-            if (enemyHealth != null)
-            {
-                // Inflige des dégâts à l'ennemi
-                enemyHealth.TakeDamage(damageAmount);
-            }
-            Destroy(gameObject);
-            Debug.Log("je suis detrui");
+        //Instantiate(BlastParticles, transform.position, Quaternion.identity);
+    }
 
-                }
+    private void Update()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, BlastRadius);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("Enemy"))
+            {
+                collider.SendMessage("TakeDamage", Damage);
+            }
+        }
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, BlastRadius);
     }
 }

@@ -19,22 +19,18 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Update()
     {
-        HealthManager();
         FlipManager();
     }
 
     public void TakeDamage(int amount)
     {
         _currentHealth -= amount;
-    }
-
-    void HealthManager()
-    {
-        if (_currentHealth == 0)
+        if (_currentHealth <= 0)
         {
             Destroy(transform.parent.gameObject);
         }
     }
+
     void FlipManager()
     {
         if(_isFlipped)

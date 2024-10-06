@@ -7,7 +7,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 #pragma warning disable IDE0044
-#pragma warning disable IDE0059
 
 public class WaveManager : MonoBehaviour
 {

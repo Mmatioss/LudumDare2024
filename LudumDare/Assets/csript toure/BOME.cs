@@ -3,32 +3,31 @@ using UnityEngine;
 public class BOME  : MonoBehaviour
 {
     public float speed = 10f; // Vitesse de la balle
-    public int damage = 1; // Dégâts infligés à l'ennemi
-    public float explosionRadius = 5f; // Rayon de l'explosion (dégâts de zone)
+    public float lifetime = 2f;
+    public GameObject Explosion;
+    private Rigidbody2D rb;
 
-    private Vector2 direction;
-
-    //void Start()
-    //{
-    //    // Calcule la direction vers l'ennemi
-    //    direction = (FindObjectOfType<TowerShoot>().targetEnemy.position - transform.position).normalized;
-    //}
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.right * speed;
+    }
 
     void Update()
     {
-        // Déplace la balle vers l'ennemi
-        transform.Translate(direction * speed * Time.deltaTime);
+        lifetime -= Time.deltaTime;
+        if (lifetime < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        // Vérifie si la balle touche un ennemi
+        // V�rifie si la balle touche un ennemi
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Applique des dégâts de zone autour de l'ennemi
-            //ApplyAreaDamage(collision.transform.position);
-
-            // Détruire la balle après le tir
+            Instantiate(Explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

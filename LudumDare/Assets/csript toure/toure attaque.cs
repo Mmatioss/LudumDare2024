@@ -24,12 +24,14 @@ public class TowerShoot : MonoBehaviour
         DetectEnemy();
 
         // Si un ennemi est trouv� et que le temps est �coul�, tirer
-        if (targetEnemy != null && Time.time >= nextShotTime && _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "AcidAlliedFiring")
+        if (targetEnemy != null && Time.time >= nextShotTime && (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "AcidAlliedFiring" ||
+                                                                 _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "RockAlliedAttackFiring"
+                                                                 ))
         {
             Shoot();
         }
 
-        _animator.SetBool("Attacking", targetEnemy != null && FindAnyObjectByType<EnemyBehaviour>() != null);
+        _animator.SetBool("Attacking", targetEnemy != null && GameObject.FindGameObjectWithTag("Enemy") != null);
     }
 
     void DetectEnemy()

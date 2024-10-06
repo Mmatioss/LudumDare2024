@@ -2,25 +2,41 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f; // Vitesse de la balle
-    public int damage = 1; // D�g�ts inflig�s � l'ennemi
-    public float lifetime = 2f;
+    public float speed = 10f;
+    public int damage = 1;
+    public float lifetime = 2f; 
 
-    private Vector2 direction;
+    private Transform targetEnemy; 
+    private Vector2 direction; 
 
     void Start()
     {
-        // Calcule la direction vers l'ennemi
-        direction = (FindObjectOfType<TowerShoot>().targetEnemy.position - transform.position).normalized;
+        targetEnemy = FindClosestEnemy();
+
+        if (targetEnemy != null)
+        {
+            direction = (targetEnemy.position - transform.position).normalized;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
     {
-        // D�place la balle vers l'ennemi
-        transform.Translate(direction * speed * Time.deltaTime);
+        if (targetEnemy != null)
+        {
+           
+            direction = (targetEnemy.position - transform.position).normalized;
 
+            
+            transform.Translate(direction * speed * Time.deltaTime);
+        }
+
+        
         lifetime -= Time.deltaTime;
-        if(lifetime < 0 )
+        if (lifetime <= 0)
         {
             Destroy(gameObject);
         }
@@ -28,17 +44,37 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // V�rifie si la balle touche un ennemi
+        
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Applique des d�g�ts � l'ennemi
+            
             var enemy = collision.gameObject.GetComponent<EnemyBehaviour>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
             }
-            // D�truire la balle apr�s le tir
+
+            
             Destroy(gameObject);
         }
+    }
+
+    private Transform FindClosestEnemy()
+    {
+        EnemyBehaviour[] enemies = FindObjectsOfType<EnemyBehaviour>();
+        Transform closestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (EnemyBehaviour enemy in enemies)
+        {
+            float distance = Vector2.Distance(transform.position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemy.transform;
+            }
+        }
+
+        return closestEnemy;
     }
 }

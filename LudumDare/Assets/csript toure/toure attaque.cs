@@ -29,7 +29,7 @@ public class TowerShoot : MonoBehaviour
             Shoot();
         }
 
-        _animator.SetBool("Attacking", targetEnemy != null || FindAnyObjectByType<EnemyBehaviour>() != null);
+        _animator.SetBool("Attacking", targetEnemy != null && FindAnyObjectByType<EnemyBehaviour>() != null);
     }
 
     void DetectEnemy()

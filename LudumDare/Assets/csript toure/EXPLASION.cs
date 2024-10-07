@@ -9,7 +9,7 @@ public class DamageZone : MonoBehaviour
 
     private void Start()
     {
-        //Instantiate(BlastParticles, transform.position, Quaternion.identity);
+        Instantiate(BlastParticles, transform.position, Quaternion.Euler(90, 0, 0));
     }
 
     private void Update()

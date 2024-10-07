@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     private SpriteRenderer _skin;
     private bool _isFlipped;
+    [SerializeField] private GameObject _deathEffect;
 
     [Header("Parameters")]
     [SerializeField] private int _maxHealth;
@@ -31,6 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (_currentHealth <= 0)
         {
             _coinpurse.SendMessage("AddMoney", _moneyLoot);
+            Instantiate(_deathEffect, transform.position, transform.rotation);
             Destroy(transform.parent.gameObject);
         }
     }

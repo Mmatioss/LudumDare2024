@@ -27,7 +27,7 @@ public class TowerContainerInGame : MonoBehaviour
             {
                 moneyManager.SubtractMoney(towerPlacement.towerToBuild.GetComponent<TowerCost>().cost);
                 Debug.Log("Money: " + moneyManager.money);
-                Instantiate(towerPlacement.towerToBuild, new UnityEngine.Vector3(theposition.x*2 +0.5f, theposition.y*2, 0), UnityEngine.Quaternion.identity);
+                Instantiate(towerPlacement.towerToBuild, new UnityEngine.Vector3(theposition.x*2 +0.5f, theposition.y*2+1.2f, 0), UnityEngine.Quaternion.identity);
                 Debug.Log("Tower built");
             }
         }

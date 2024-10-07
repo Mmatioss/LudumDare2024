@@ -47,6 +47,7 @@ public class TowerContainerInGame : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("Collision exit");
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "ColliderOfTurrelPlacement")
         {
             isTileAlreadyOccupied = false;

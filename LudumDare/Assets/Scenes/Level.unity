@@ -237,7 +237,7 @@ PrefabInstance:
     - target: {fileID: 7106744101249569914, guid: 2424f643f8439fe4d88746f9582e8450, type: 3}
       propertyPath: _defeatScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 557488467}
     - target: {fileID: 7106744101249569914, guid: 2424f643f8439fe4d88746f9582e8450, type: 3}
       propertyPath: _victoryScreen
       value: 
@@ -7967,6 +7967,42 @@ PrefabInstance:
     - target: {fileID: 683415868372078959, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
       propertyPath: m_Name
       value: WaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count1.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count2.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count2.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count3.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count3.Array.data[1]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count3.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count4.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count4.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480337431073667419, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
+      propertyPath: count4.Array.data[3]
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5261652212750217597, guid: 920c470bce77be443bfcc1ec38092176, type: 3}
       propertyPath: m_LocalPosition.x

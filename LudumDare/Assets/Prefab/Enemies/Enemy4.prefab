@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathEffect: {fileID: 3850552878444022606, guid: 64ab564ae96b2c7418b4e02055a6e070, type: 3}
-  _maxHealth: 20
-  _moneyLoot: 20
+  _maxHealth: 80
+  _moneyLoot: 40
 --- !u!95 &3590688010150892172
 Animator:
   serializedVersion: 5

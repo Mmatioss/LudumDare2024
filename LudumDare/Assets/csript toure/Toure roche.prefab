@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3712904999674112428
+--- !u!1 &8416511943951697177
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5748967266795228909}
-  - component: {fileID: 1600064670905928884}
+  - component: {fileID: 2191380530240750871}
+  - component: {fileID: 5174414256683616692}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5748967266795228909
+--- !u!4 &2191380530240750871
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3712904999674112428}
+  m_GameObject: {fileID: 8416511943951697177}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.001, y: -0.0003707409, z: 0}
   m_LocalScale: {x: 0.1919279, y: 0.1919279, z: 0.1919279}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8315081932195323465}
+  m_Father: {fileID: 3299377570719067197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1600064670905928884
+--- !u!212 &5174414256683616692
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3712904999674112428}
+  m_GameObject: {fileID: 8416511943951697177}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &7764293813017710325
+--- !u!1 &8791853529350282099
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,41 +92,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8315081932195323465}
-  - component: {fileID: 2876946285335449033}
-  - component: {fileID: 334848004348886967}
-  - component: {fileID: 2369222162737842193}
-  - component: {fileID: 7630974530614563848}
+  - component: {fileID: 3299377570719067197}
+  - component: {fileID: 2267334859531377172}
+  - component: {fileID: 6440307714049799851}
+  - component: {fileID: 4790955087176264933}
   m_Layer: 0
-  m_Name: Toure
+  m_Name: Toure roche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8315081932195323465
+--- !u!4 &3299377570719067197
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7764293813017710325}
+  m_GameObject: {fileID: 8791853529350282099}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.91, y: 1.24, z: 0}
+  m_LocalPosition: {x: -2.66, y: 3.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5748967266795228909}
+  - {fileID: 2191380530240750871}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2876946285335449033
+--- !u!212 &2267334859531377172
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7764293813017710325}
+  m_GameObject: {fileID: 8791853529350282099}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -161,8 +160,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0f2cb8547491a974f8441e999a1e964d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -172,30 +171,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &334848004348886967
+--- !u!114 &6440307714049799851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7764293813017710325}
+  m_GameObject: {fileID: 8791853529350282099}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9da2184a70ba98249ade12fa4c01fc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 4
-  timeBetweenShots: 0.05
-  bulletPrefab: {fileID: 4658082134146422095, guid: d9a4324ddab864841bf27fc52cad3ef4, type: 3}
-  shootPoint: {fileID: 5748967266795228909}
+  detectionRadius: 2
+  timeBetweenShots: 1
+  bulletPrefab: {fileID: 4658082134146422095, guid: 322afcada0544844f8b8cafa8e68df20, type: 3}
+  shootPoint: {fileID: 2191380530240750871}
   targetEnemy: {fileID: 0}
---- !u!58 &2369222162737842193
+--- !u!58 &4790955087176264933
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7764293813017710325}
+  m_GameObject: {fileID: 8791853529350282099}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -221,27 +220,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.007945538, y: 0}
   serializedVersion: 2
-  m_Radius: 4
---- !u!95 &7630974530614563848
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7764293813017710325}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2cc3d30f0ef97a64b9acf574d040f1d5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Radius: 1.9858055

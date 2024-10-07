@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         lifetime -= Time.deltaTime;
-        if(lifetime < 0 )
+        if (lifetime <= 0)
         {
             Destroy(gameObject);
         }
@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // V�rifie si la balle touche un ennemi
+        
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Applique des d�g�ts � l'ennemi
@@ -32,5 +32,24 @@ public class Bullet : MonoBehaviour
             // D�truire la balle apr�s le tir
             Destroy(gameObject);
         }
+    }
+
+    private Transform FindClosestEnemy()
+    {
+        EnemyBehaviour[] enemies = FindObjectsOfType<EnemyBehaviour>();
+        Transform closestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (EnemyBehaviour enemy in enemies)
+        {
+            float distance = Vector2.Distance(transform.position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemy.transform;
+            }
+        }
+
+        return closestEnemy;
     }
 }

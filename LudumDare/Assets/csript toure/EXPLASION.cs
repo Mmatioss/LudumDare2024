@@ -1,26 +1,44 @@
+using System.Collections;
 using UnityEngine;
 
-public class DamageZone : MonoBehaviour
+public class ZoneDeDégâts : MonoBehaviour
 {
-    public int damageAmount = 10; // D�g�ts inflig�s � l'ennemi
-    public string enemyTag = "Enemy"; // Le tag des ennemis
+    public float duréeZone = 5f; // Temps pendant lequel la zone reste active
+    public float rayonZone = 3f; // Rayon de la zone
+    public int dégâts = 10; // Dégâts infligés aux ennemis
+    
 
-    // Cette fonction est appel�e quand un autre objet entre dans la zone de trigger
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        // V�rifie si l'objet entrant dans la zone est un ennemi
-        if (other.CompareTag(enemyTag))
-        {
-            // Essaye de r�cup�rer le script de l'ennemi
-            EnemyBehaviour enemyHealth = other.GetComponent<EnemyBehaviour>();
-            if (enemyHealth != null)
-            {
-                // Inflige des d�g�ts � l'ennemi
-                enemyHealth.TakeDamage(damageAmount);
-            }
-            Destroy(gameObject);
-            Debug.Log("je suis detrui");
-
-                }
+        // Commence à détruire la zone après un certain temps
+        Destroy(gameObject, duréeZone); 
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("dlsd");
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            
+            var enemy = collision.gameObject.GetComponent<EnemyBehaviour>();
+            if (enemy != null)
+            {
+                 Debug.Log("k:smd");
+                enemy.TakeDamage(dégâts);
+                Debug.Log("dmsùf");
+                Debug.Log(dégâts);
+            }
+
+            
+            Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        // Optionnel: Applique des dégâts continus si nécessaire
+        // Physics2D.OverlapCircleAll ou autre logique pour des dégâts continus
+    }
+
+   
 }

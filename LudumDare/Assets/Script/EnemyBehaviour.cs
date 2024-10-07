@@ -25,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void HealthManager()
     {
-        if (_currentHealth == 0)
+        if (_currentHealth <= 0)
         {
             Destroy(transform.parent.gameObject);
         }

@@ -19,12 +19,14 @@ public class PauseManager : MonoBehaviour
     public void GameOver()
     {
         _defeatScreen.SetActive(true);
+        GameObject.Find("Canvas").SetActive(false);
         Time.timeScale = 0f;
     }
 
     public void Victory()
     {
         _victoryScreen.SetActive(true);
+        GameObject.Find("Canvas").SetActive(false);
         Time.timeScale = 0f;
     }
 }

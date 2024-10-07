@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    void PlayLv1()
+    public void Restart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
-    void PlayLv2()
+    public void PlayLvl()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level");
     }
 
-    void Exit()
+    public void Exit()
     {
         Application.Quit();
     }
 
-    void BackToMenu()
+    public void BackToMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }

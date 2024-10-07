@@ -89,6 +89,10 @@ public class WaveManager : MonoBehaviour
                         StartCoroutine(SpawnWave(count4, point));
                         break;
 
+                    case 5:
+                        GameObject.Find("Canvas").BroadcastMessage("Victory");
+                        break;
+
                     default:
                         break;
                 }

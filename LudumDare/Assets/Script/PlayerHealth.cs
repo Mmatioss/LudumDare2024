@@ -47,10 +47,7 @@ public class PlayerHealth : MonoBehaviour
 
     void GameOver()
     {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-        Application.Quit();
+        GameObject.Find("Canvas").BroadcastMessage("GameOver");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

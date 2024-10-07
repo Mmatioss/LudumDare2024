@@ -99,7 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaf413b7ee585347a6ae6b2420fd06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deathEffect: {fileID: 3850552878444022606, guid: 64ab564ae96b2c7418b4e02055a6e070, type: 3}
   _maxHealth: 20
+  _moneyLoot: 20
 --- !u!95 &3590688010150892172
 Animator:
   serializedVersion: 5
@@ -243,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.61
+  radius: 1
   height: 2
   canMove: 1
   maxSpeed: 1

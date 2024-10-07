@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    void PlayLv1()
+    public void PlayLv1()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
-    void PlayLv2()
+    public void PlayLv2()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
     }
 
-    void Exit()
+    public void Exit()
     {
         Application.Quit();
     }
 
-    void BackToMenu()
+    public void BackToMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

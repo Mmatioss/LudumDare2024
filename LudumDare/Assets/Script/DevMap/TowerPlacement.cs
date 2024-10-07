@@ -14,7 +14,7 @@ public class TowerPlacement : MonoBehaviour
     public void TowerFollowMouse()
     {
         Vector3Int theposition = cellPosition.PositionCell(tilemap);
-        towerContainerInGame.transform.position = new Vector3(theposition.x, theposition.y-0.2f, 0);
+        towerContainerInGame.transform.position = new Vector3(theposition.x, theposition.y-1.2f, 0);
     }
 
     void Update()

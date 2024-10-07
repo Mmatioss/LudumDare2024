@@ -17,6 +17,7 @@ public class TowerContainerInGame : MonoBehaviour
 
     void OnMouseUp()
     {
+        Debug.Log("mouseUp");
         if (towerPlacement.towerToBuild != null && moneyManager.money >= towerPlacement.towerToBuild.GetComponent<TowerCost>().cost)
         {
             theposition = towerPlacement.cellPosition.PositionCell(towerPlacement.tilemap);
@@ -27,7 +28,7 @@ public class TowerContainerInGame : MonoBehaviour
                 moneyManager.SubtractMoney(towerPlacement.towerToBuild.GetComponent<TowerCost>().cost);
                 Debug.Log("Money: " + moneyManager.money);
                 Instantiate(towerPlacement.towerToBuild, new UnityEngine.Vector3(theposition.x, theposition.y-0.2f, 0), UnityEngine.Quaternion.identity);
-                //Debug.Log("Tower built");
+                Debug.Log("Tower built");
             }
         }
         towerPlacement.towerToBuild = null;
@@ -36,7 +37,7 @@ public class TowerContainerInGame : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Collision detected");
+        Debug.Log("Collision detected");
         if (collision.gameObject.tag == "ColliderOfTurrelPlacement")
         {
             isTileAlreadyOccupied = true;
@@ -45,7 +46,7 @@ public class TowerContainerInGame : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        //Debug.Log("Collision exit");
+        Debug.Log("Collision exit");
         if (collision.gameObject.tag == "ColliderOfTurrelPlacement")
         {
             isTileAlreadyOccupied = false;

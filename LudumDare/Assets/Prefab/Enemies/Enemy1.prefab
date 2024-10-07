@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathEffect: {fileID: 3850552878444022606, guid: 64ab564ae96b2c7418b4e02055a6e070, type: 3}
-  _maxHealth: 2
-  _moneyLoot: 1
+  _maxHealth: 10
+  _moneyLoot: 25
 --- !u!95 &2817103858790625815
 Animator:
   serializedVersion: 5
@@ -248,7 +248,7 @@ MonoBehaviour:
   radius: 1
   height: 2
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 1.1
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2

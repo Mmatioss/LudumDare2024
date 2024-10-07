@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathEffect: {fileID: 3850552878444022606, guid: 64ab564ae96b2c7418b4e02055a6e070, type: 3}
-  _maxHealth: 5
-  _moneyLoot: 2
+  _maxHealth: 90
+  _moneyLoot: 35
 --- !u!61 &1221579559282662638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   radius: 1.5
   height: 2
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 0.8
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2

@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 20
+  _moneyLoot: 20
 --- !u!95 &3590688010150892172
 Animator:
   serializedVersion: 5
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.2
+  radius: 1
   height: 2
   canMove: 1
   maxSpeed: 1

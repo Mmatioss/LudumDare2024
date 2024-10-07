@@ -9,12 +9,15 @@ public class EnemyBehaviour : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private int _maxHealth;
+    [SerializeField] private int _moneyLoot;
     private int _currentHealth;
+    GameObject _coinpurse;
 
     private void Start()
     {
         _currentHealth = _maxHealth;
         _skin = GetComponent<SpriteRenderer>();
+        _coinpurse = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -27,6 +30,7 @@ public class EnemyBehaviour : MonoBehaviour
         _currentHealth -= amount;
         if (_currentHealth <= 0)
         {
+            _coinpurse.SendMessage("AddMoney", _moneyLoot);
             Destroy(transform.parent.gameObject);
         }
     }

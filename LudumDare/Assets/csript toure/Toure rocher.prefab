@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 4
-  timeBetweenShots: 0.5833333
+  timeBetweenShots: 1
   bulletPrefab: {fileID: 4658082134146422095, guid: 9f0f1e5a786e8ea428fe5fedeac03a57, type: 3}
   shootPoint: {fileID: 1895308467766389501}
 --- !u!95 &904287215338461373

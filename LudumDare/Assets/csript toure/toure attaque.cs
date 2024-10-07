@@ -25,7 +25,7 @@ public class TowerShoot : MonoBehaviour
 
         // Si un ennemi est trouv� et que le temps est �coul�, tirer
         if (targetEnemy != null && Time.time >= nextShotTime && (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "AcidAlliedFiring" ||
-                                                                 _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "RockAlliedAttackFiring"
+                                                                 _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "RockAlliedAttack"
                                                                  ))
         {
             Shoot();

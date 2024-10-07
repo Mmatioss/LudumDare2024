@@ -39,7 +39,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2253946287674584333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 952590422647069862}
   - component: {fileID: 4282844279087078166}
   - component: {fileID: 7206980144362455563}
-  - component: {fileID: 1615946661685052189}
+  - component: {fileID: 904287215338461373}
   m_Layer: 0
   m_Name: Toure acide
   m_TagString: Untagged
@@ -160,8 +160,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0f2cb8547491a974f8441e999a1e964d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -183,43 +183,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da2184a70ba98249ade12fa4c01fc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 2
-  timeBetweenShots: 0.2
+  detectionRadius: 4
+  timeBetweenShots: 0.1666667
   bulletPrefab: {fileID: 4658082134146422095, guid: d9a4324ddab864841bf27fc52cad3ef4, type: 3}
   shootPoint: {fileID: 1895308467766389501}
-  targetEnemy: {fileID: 0}
---- !u!58 &1615946661685052189
-CircleCollider2D:
+--- !u!95 &904287215338461373
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6483925737942095826}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.007945538, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.9858055
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2cc3d30f0ef97a64b9acf574d040f1d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

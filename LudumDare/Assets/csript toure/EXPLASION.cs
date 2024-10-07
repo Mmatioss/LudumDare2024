@@ -1,44 +1,32 @@
 using System.Collections;
 using UnityEngine;
 
-public class ZoneDeDégâts : MonoBehaviour
+public class DamageZone : MonoBehaviour
 {
-    public float duréeZone = 5f; // Temps pendant lequel la zone reste active
-    public float rayonZone = 3f; // Rayon de la zone
-    public int dégâts = 10; // Dégâts infligés aux ennemis
-    
+    public int Damage = 2;
+    public float BlastRadius = 1.5f;
+    public GameObject BlastParticles;
 
     private void Start()
     {
-        // Commence à détruire la zone après un certain temps
-        Destroy(gameObject, duréeZone); 
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("dlsd");
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            
-            var enemy = collision.gameObject.GetComponent<EnemyBehaviour>();
-            if (enemy != null)
-            {
-                 Debug.Log("k:smd");
-                enemy.TakeDamage(dégâts);
-                Debug.Log("dmsùf");
-                Debug.Log(dégâts);
-            }
-
-            
-            Destroy(gameObject);
-        }
+        //Instantiate(BlastParticles, transform.position, Quaternion.identity);
     }
 
     private void Update()
     {
-        // Optionnel: Applique des dégâts continus si nécessaire
-        // Physics2D.OverlapCircleAll ou autre logique pour des dégâts continus
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, BlastRadius);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("Enemy"))
+            {
+                collider.SendMessage("TakeDamage", Damage);
+            }
+        }
+        Destroy(gameObject);
     }
 
-   
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, BlastRadius);
+    }
 }

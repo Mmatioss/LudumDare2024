@@ -2,39 +2,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f;
-    public int damage = 1;
-    public float lifetime = 2f; 
+    public float speed = 10f; // Vitesse de la balle
+    public int damage = 1; // D�g�ts inflig�s � l'ennemi
+    public float lifetime = 2f;
+    private Rigidbody2D rb;
 
-    private Transform targetEnemy; 
-    private Vector2 direction; 
-
-    void Start()
+    private void Start()
     {
-        targetEnemy = FindClosestEnemy();
-
-        if (targetEnemy != null)
-        {
-            direction = (targetEnemy.position - transform.position).normalized;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.right * speed;
     }
 
     void Update()
     {
-        if (targetEnemy != null)
-        {
-           
-            direction = (targetEnemy.position - transform.position).normalized;
-
-            
-            transform.Translate(direction * speed * Time.deltaTime);
-        }
-
-        
         lifetime -= Time.deltaTime;
         if (lifetime <= 0)
         {
@@ -47,14 +27,9 @@ public class Bullet : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            
-            var enemy = collision.gameObject.GetComponent<EnemyBehaviour>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-            }
-
-            
+            // Applique des d�g�ts � l'ennemi
+            collision.gameObject.SendMessage("TakeDamage", damage);
+            // D�truire la balle apr�s le tir
             Destroy(gameObject);
         }
     }

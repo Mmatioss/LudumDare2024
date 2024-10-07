@@ -8,8 +8,15 @@ public class TowerShoot : MonoBehaviour
     public GameObject bulletPrefab; // Pr�fabriqu� de la balle
     public Transform shootPoint; // Point de tir de la tour
 
-    public Transform targetEnemy; // L'ennemi cibl�
+    private Transform targetEnemy; // L'ennemi cibl�
     private float nextShotTime = 0f; // Temps pour le prochain tir
+
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -17,10 +24,14 @@ public class TowerShoot : MonoBehaviour
         DetectEnemy();
 
         // Si un ennemi est trouv� et que le temps est �coul�, tirer
-        if (targetEnemy != null && Time.time >= nextShotTime)
+        if (targetEnemy != null && Time.time >= nextShotTime && (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "AcidAlliedFiring" ||
+                                                                 _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "RockAlliedAttack"
+                                                                 ))
         {
             Shoot();
         }
+
+        _animator.SetBool("Attacking", targetEnemy != null && GameObject.FindGameObjectWithTag("Enemy") != null);
     }
 
     void DetectEnemy()
@@ -43,7 +54,28 @@ public class TowerShoot : MonoBehaviour
     void Shoot()
     {
         // Cr�e une balle et la tire vers l'ennemi
-        Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+        if (targetEnemy.transform.position.y > transform.position.y) 
+        {
+            Instantiate(
+            bulletPrefab,
+            shootPoint.position,
+            Quaternion.Euler(0, 0, Vector3.Angle(Vector3.right, new Vector3(
+                targetEnemy.position.x - transform.position.x,
+                targetEnemy.position.y - transform.position.y,
+                0)
+            )));
+        }
+        else
+        {
+            Instantiate(
+            bulletPrefab,
+            shootPoint.position,
+            Quaternion.Euler(0, 0, -Vector3.Angle(Vector3.right, new Vector3(
+                targetEnemy.position.x - transform.position.x,
+                targetEnemy.position.y - transform.position.y,
+                0)
+            )));
+        }
 
         // R�initialiser le timer pour le prochain tir
         nextShotTime = Time.time + timeBetweenShots;

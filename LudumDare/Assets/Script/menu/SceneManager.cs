@@ -22,6 +22,6 @@ public class SceneManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
